@@ -1,0 +1,16 @@
+{% extends 'base_sign_up.html' %}
+{% load bootstrap4 %}
+{% block title %}  Sign Up  {% endblock %}
+
+{% block heading %}
+   Helper - Sign Up
+{% endblock %}
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ team_form.as_p }}
+        <button type="submit" class="btn btn-pink pull-right">Sign Up</button>
+    </form>
+    <a href="{% url 'log-in' %}">You have account?</a>
+{% endblock %}
