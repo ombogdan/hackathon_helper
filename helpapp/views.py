@@ -110,3 +110,24 @@ def helper_delete_problems(request, id):
         delete.delete()
         return redirect(helper_problems)
     return render(request, 'helpapp/delete_problems.html')
+
+
+@login_required(login_url='/helper/log_in/')
+def helper_solved_problems(request, id):
+    if request.method == "POST":
+        problem_solved = []
+        problem = Problems.objects.get(id=id)
+        p_s = SolvedProblems(team=problem.team, name_problem=problem.name_problem,
+                             program_language=problem.program_language)
+        problem_solved.append(p_s)
+        SolvedProblems.objects.bulk_create(problem_solved)
+        problem.delete()
+        return redirect(helper_problems)
+    return render(request, 'helpapp/solved_problems.html')
+
+
+@login_required(login_url='/helper/log_in/')
+def helper_solved(request):
+    solved = SolvedProblems.objects.all()
+    context = {'solved': solved}
+    return render(request, 'helpapp/solved.html', context)

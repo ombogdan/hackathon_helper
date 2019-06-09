@@ -21,6 +21,15 @@ class Problems(models.Model):
         return str(self.team)
 
 
+class SolvedProblems(models.Model):
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
+    name_problem = models.CharField(max_length=50)
+    program_language = models.CharField(max_length=50, blank=True)
+
+    def __str__(self):
+        return str(self.team)
+
+
 class Feedback(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=True)
     mentor = models.CharField(max_length=50, default='Enter first and last name your mentor')

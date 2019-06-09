@@ -20,6 +20,7 @@
                     <th>Team</th>
                     <th>Name problems</th>
                     <th>Program language</th>
+                    <th>Problem solved</th>
                     <th>Delete</th>
                 </tr>
                 </thead>
@@ -35,6 +36,9 @@
                                     href="{% url 'edit-problems' problem.id %}">{{ problem.name_problem }}</a>
                             </td>
                             <td>{{ problem.program_language }}</td>
+                            <td>
+                                <a href="{% url 'solved-problems' problem.id %}" class="btn btn-pink">Problem Solved</a>
+                            </td>
                             <td>
                                 <a href="{% url 'delete-problems' problem.id %}" class="btn btn-pink">Delete Problem</a>
                             </td>

@@ -7,6 +7,7 @@
     {% url 'problems' as helper_problems_url %}
     {% url 'account' as helper_account_url %}
     {% url 'feedback' as helper_feedback_url %}
+    {% url 'solved' as helper_solved_url %}
     <div class="text-center">
         {#        <img class="img-circle" src="{{ MEDIA_URL }}{{ request.user.restaurant.logo }}" width="70" height="70">#}
     </div>
@@ -15,6 +16,8 @@
         <span class="text-uppercase">Dashboard</span>
         <a href="{% url 'problems' %}"
            class="list-group-item {% if request.path == helper_problems_url %}active{% endif %}">Problems</a>
+        <a href="{% url 'solved' %}"
+           class="list-group-item {% if request.path == helper_solved_url %}active{% endif %}">Solved problems</a>
         <a href="{% url 'feedback' %}"
            class="list-group-item {% if request.path == helper_feedback_url %}active{% endif %}">Feedback</a>
         <span class="text-uppercase">Profile</span>

@@ -1,0 +1,36 @@
+{% extends 'helpapp/home.html' %}
+{% block title %}
+    Solved Problems
+{% endblock %}
+{% block page %}
+    <div class="panel">
+        <div class="panel-heading bg-blue">
+            <h4 class="panel-title text-center text-white">
+                Solved Problems
+            </h4>
+        </div>
+        <div class="panel-body">
+            <table class="table table-border table-hover table-striped">
+                <thead>
+                <tr class="bg-grey text-white">
+                    <th>Team</th>
+                    <th>Name problems</th>
+                    <th>Program language</th>
+                </tr>
+                </thead>
+                <tbody>
+                <form method="POST">
+                    {% for solvd in solved %}
+                        {% csrf_token %}
+                        <tr>
+                            <td scope="row"><p>{{ solvd.team }}</p></td>
+                            <td scope="row">{{ solvd.name_problem }}</td>
+                            <td>{{ solvd.program_language }}</td>
+                        </tr>
+                    {% endfor %}
+                </form>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

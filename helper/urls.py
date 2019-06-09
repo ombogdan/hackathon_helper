@@ -36,6 +36,8 @@ urlpatterns = [
     path('helper/problems/add/', helper_add_problems, name='add-problems'),
     path('helper/problems/delete/<int:id>/', helper_delete_problems, name='delete-problems'),
     path('helper/problems/edit/<int:id>/', helper_edit_problems, name='edit-problems'),
+    path('helper/problems/solved/<int:id>/', helper_solved_problems, name='solved-problems'),
+    path('helper/problems/solved/', helper_solved, name='solved'),
     path('helper/feedback/', helper_feedback, name='feedback'),
 ]
 
