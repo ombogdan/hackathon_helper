@@ -126,7 +126,7 @@ def helper_solved_problems(request, id):
     return render(request, 'helpapp/solved_problems.html')
 
 
-@login_required(login_url='/helper/log_in/')
+@login_required(login_url='/helper/log_in')
 def helper_solved(request):
     solved = SolvedProblems.objects.all()
     context = {'solved': solved}
