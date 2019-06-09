@@ -32,3 +32,9 @@ class AddProblemForm(forms.ModelForm):
     class Meta:
         model = Problems
         fields = ('name_problem', 'program_language')
+
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        exclude = ('user',)

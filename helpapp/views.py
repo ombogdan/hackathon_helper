@@ -67,6 +67,7 @@ def helper_add_problems(request):
     return render(request, 'helpapp/add_problems.html', context)
 
 
+@login_required(login_url='/helper/log_in/')
 def helper_edit_problems(request, id):
     problems = ProblemForm(instance=Problems.objects.get(id=id))
     if request.method == "POST":
@@ -78,6 +79,7 @@ def helper_edit_problems(request, id):
     return render(request, 'helpapp/edit_problems.html', context)
 
 
+@login_required(login_url='/helper/log_in/')
 def helper_account_information(request, id):
     account = TeamForm(instance=Team.objects.get(id=id))
     if request.method == "POST":
@@ -89,5 +91,22 @@ def helper_account_information(request, id):
     return render(request, 'helpapp/edit_team.html', context)
 
 
-def helper_report(request):
-    pass
+@login_required(login_url='/helper/log_in/')
+def helper_feedback(request):
+    feedback = FeedbackForm()
+    if request.method == "POST":
+        feedback = FeedbackForm(request.POST)
+        if feedback.is_valid():
+            feedback.save()
+            return redirect(helper_feedback)
+    context = {'feedback': feedback}
+    return render(request, 'helpapp/feedback.html', context)
+
+
+@login_required(login_url='/helper/log_in/')
+def helper_delete_problems(request, id):
+    if request.method == "POST":
+        delete = Problems.objects.get(id=id)
+        delete.delete()
+        return redirect(helper_problems)
+    return render(request, 'helpapp/delete_problems.html')

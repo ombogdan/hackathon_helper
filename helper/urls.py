@@ -34,8 +34,9 @@ urlpatterns = [
          name='information-account'),
     path('helper/problems/', helper_problems, name='problems'),
     path('helper/problems/add/', helper_add_problems, name='add-problems'),
+    path('helper/problems/delete/<int:id>/', helper_delete_problems, name='delete-problems'),
     path('helper/problems/edit/<int:id>/', helper_edit_problems, name='edit-problems'),
-    path('helper/report/', helper_report, name='report'),
+    path('helper/feedback/', helper_feedback, name='feedback'),
 ]
 
 if settings.DEBUG:

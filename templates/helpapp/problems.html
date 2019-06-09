@@ -20,18 +20,27 @@
                     <th>Team</th>
                     <th>Name problems</th>
                     <th>Program language</th>
+                    <th>Delete</th>
                 </tr>
                 </thead>
                 <tbody>
-                {% for problem in problems %}
-                    <tr>
-                        <td scope="row"><a href="{% url 'information-account' problem.team.id %}">{{ problem.team }}</a>
-                        </td>
-                        <td scope="row"><a href="{% url 'edit-problems' problem.id %}">{{ problem.name_problem }}</a>
-                        </td>
-                        <td>{{ problem.program_language }}</td>
-                    </tr>
-                {% endfor %}
+                <form method="POST">
+                    {% for problem in problems %}
+                        {% csrf_token %}
+                        <tr>
+                            <td scope="row"><a
+                                    href="{% url 'information-account' problem.team.id %}">{{ problem.team }}</a>
+                            </td>
+                            <td scope="row"><a
+                                    href="{% url 'edit-problems' problem.id %}">{{ problem.name_problem }}</a>
+                            </td>
+                            <td>{{ problem.program_language }}</td>
+                            <td>
+                                <a href="{% url 'delete-problems' problem.id %}" class="btn btn-pink">Delete Problem</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </form>
                 </tbody>
             </table>
         </div>
